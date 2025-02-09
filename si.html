@@ -8,17 +8,19 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
         (function() {
-            emailjs.init("service_zg1n8pl");
+            emailjs.init("T50FHGgByeJNcQASE"); 
         })();
 
         function enviarCorreo() {
             const mensaje = document.getElementById("mensaje").value;
             if (mensaje.trim() !== "") {
                 emailjs.send("service_zg1n8pl", "template_jx2lfxm", {
-                    message: mensaje
+                    message: mensaje,
+                    to_email: "gralsutil@outlook.com" 
                 }).then(response => {
                     alert("Mensaje enviado correctamente 💖");
                 }).catch(error => {
+                    console.error("Error al enviar el mensaje:", error); 
                     alert("Error al enviar el mensaje 😢");
                 });
             } else {
