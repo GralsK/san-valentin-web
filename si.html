@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Nos vemos el 14 de Febrero! 💖</title>
+    <link rel="stylesheet" href="estilo.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("service_zg1n8pl");
+        })();
+
+        function enviarCorreo() {
+            const mensaje = document.getElementById("mensaje").value;
+            if (mensaje.trim() !== "") {
+                emailjs.send("service_zg1n8pl", "template_jx2lfxm", {
+                    message: mensaje
+                }).then(response => {
+                    alert("Mensaje enviado correctamente 💖");
+                }).catch(error => {
+                    alert("Error al enviar el mensaje 😢");
+                });
+            } else {
+                alert("Por favor, escribe un mensaje bonito. 💕");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>¡Nos vemos el 14 de Febrero a las 20:30! 💘</h1>
+    <h2>Te amo Eli</h2>
+    <p>Déjame un mensaje bonito aquí:</p>
+    <textarea id="mensaje" placeholder="Escribe algo lindo..." rows="4" cols="50"></textarea>
+    <br>
+    <button onclick="enviarCorreo()">Enviar</button>
+    
+    <script>
+        // Función para hacer caer "Te amo"
+        function createLoveText() {
+            const loveText = document.createElement("div");
+            loveText.classList.add("love-text");
+            loveText.style.left = Math.random() * 100 + "vw";
+            loveText.style.animationDuration = Math.random() * 2 + 3 + "s";
+            loveText.innerHTML = "Te amo ";
+            document.body.appendChild(loveText);
+
+            setTimeout(() => {
+                loveText.remove();
+            }, 5000);
+        }
+        setInterval(createLoveText, 500);
+    </script>
+    
+    <style>
+        .love-text {
+            position: absolute;
+            top: 0;
+            font-size: 24px;
+            font-weight: bold;
+            color: red;
+            animation: fall linear infinite;
+            z-index: 1000;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</body>
+</html>
